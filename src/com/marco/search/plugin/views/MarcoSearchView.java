@@ -84,7 +84,7 @@ public class MarcoSearchView extends ViewPart{
 		
 		Button searchButton = new Button(composite, SWT.NONE);
 		searchButton.setToolTipText("Search");
-		searchButton.setImage(ResourceManager.getPluginImage("org.eclipse.ant.ui", "/icons/full/elcl16/search.png"));
+		searchButton.setImage(ResourceManager.getPluginImage("MarcoSearch", "icons/search.gif"));
 		searchButton.setLayoutData(new GridData(SWT.RIGHT, SWT.FILL, false, false, 1, 1));
 		searchButton.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -101,7 +101,7 @@ public class MarcoSearchView extends ViewPart{
 		replaceComboBox.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		
 		replaceButton = new Button(composite, SWT.NONE);
-		replaceButton.setImage(ResourceManager.getPluginImage("org.eclipse.ui", "/icons/full/elcl16/synced.gif"));
+		replaceButton.setImage(ResourceManager.getPluginImage("MarcoSearch", "icons/synced.png"));
 		replaceButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
