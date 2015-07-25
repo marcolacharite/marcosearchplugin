@@ -13,7 +13,7 @@ import org.eclipse.ui.texteditor.ITextEditor;
 
 import com.marco.search.plugin.views.MarcoSearchView;
 
-public class ShowMarcoSearchViewHandler extends AbstractHandler {
+public class FindCommandHandler extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -29,8 +29,14 @@ public class ShowMarcoSearchViewHandler extends AbstractHandler {
 				if (sel instanceof TextSelection)
 				{
 					ITextSelection textSel = (ITextSelection) sel;
-					marcoSearchView.setSearchTextBoxValuve(textSel.getText());
+					if(textSel.getLength() == 0) {
+						marcoSearchView.highLightValueInSearchTextbox();
+					}
+					else {
+						marcoSearchView.setSearchTextBoxValue(textSel.getText());
+					}
 				}
+				
 			}	
 		} catch (PartInitException e) {
 			// TODO Auto-generated catch block

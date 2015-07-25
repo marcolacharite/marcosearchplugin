@@ -22,6 +22,7 @@ import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -75,7 +76,7 @@ public class MarcoSearchView extends ViewPart{
 		searchComboBox.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if(e.keyCode == SWT.CR) {
+				if(e.keyCode == SWT.CR  || e.keyCode == SWT.KEYPAD_CR) {
 					executeSearch();
 				}
 			}
@@ -147,8 +148,13 @@ public class MarcoSearchView extends ViewPart{
 		searchComboBox.setFocus();
 	}
 	
-	public void setSearchTextBoxValuve(String value) {
+	public void setSearchTextBoxValue(String value) {
 		searchComboBox.setText(value);
+		searchComboBox.setSelection(new Point(value.length(), value.length()));
+	}
+	
+	public void highLightValueInSearchTextbox() {
+		searchComboBox.setSelection(new Point(0, searchComboBox.getText().length()));
 	}
 	
 	public String getSearchTextBoxValue() {
