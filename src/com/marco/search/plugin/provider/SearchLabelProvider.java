@@ -1,6 +1,5 @@
 package com.marco.search.plugin.provider;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
@@ -12,7 +11,6 @@ import org.eclipse.jface.viewers.StyledString.Styler;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.TextStyle;
 import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.texteditor.ITextEditor;
 
@@ -61,7 +59,7 @@ public class SearchLabelProvider extends DelegatingStyledCellLabelProvider  {
 						String line = getLine(region);
 						int lineNumber = getLineNumber(region);
 						int lineOffset = getLineOffset(region);
-						String lineResultToShow = "Line " + lineNumber + " - ";
+						String lineResultToShow = "Line " + (lineNumber+1) + " - ";
 						styledString = new StyledString(lineResultToShow + line);
 						styledString.setStyle(region.getOffset() - lineOffset + lineResultToShow.length(), region.getLength(), new Styler() {
 							
