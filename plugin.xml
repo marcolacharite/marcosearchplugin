@@ -39,25 +39,33 @@
          point="org.eclipse.ui.commands">
       <command
             categoryId="MarcoSearchCategoryId"
-            id="MarcoSearch.view.show"
-            name="Show Marco&apos;s Search View">
+            description="Find with Marco&apos;s search"
+            id="MarcoSearch.command.search"
+            name="Find with Marco&apos;s Search">
       </command>
       <command
             categoryId="MarcoSearchCategoryId"
-            id="MarcoSearch.search"
-            name="Execute Marco&apos;s search">
-         <commandParameter
-               id="MarcoSearch.search.value"
-               name="String to search"
-               optional="false">
-         </commandParameter>
+            description="Replace with Marco&apos;s search"
+            id="MarcoSearch.command.replace"
+            name="Replace with Marco&apos;s search">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            class="com.marco.search.plugin.handlers.ShowMarcoSearchViewHandler"
-            commandId="MarcoSearch.view.show">
+            class="com.marco.search.plugin.handlers.FindCommandHandler"
+            commandId="MarcoSearch.command.search">
+         <activeWhen>
+            <with
+                  variable="activePart">
+               <instanceof
+                     value="org.eclipse.ui.IEditorPart">
+               </instanceof>
+            </with>
+         </activeWhen>
+      </handler>
+      <handler
+            commandId="MarcoSearch.command.replace">
          <activeWhen>
             <with
                   variable="activePart">
@@ -71,9 +79,14 @@
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="MarcoSearch.view.show"
+            commandId="MarcoSearch.command.search"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+F">
+      </key>
+      <key
+            commandId="MarcoSearch.command.replace"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+R">
       </key>
    </extension>
 
