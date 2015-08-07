@@ -30,6 +30,7 @@ public class FindCommandHandler extends AbstractHandler {
 				{
 					ITextSelection textSel = (ITextSelection) sel;
 					if(textSel.getLength() == 0) {
+						// We want the current value in the search textbox to be hightlighted if there's no hightlighted word in the editor
 						marcoSearchView.highLightValueInSearchTextbox();
 					}
 					else {
